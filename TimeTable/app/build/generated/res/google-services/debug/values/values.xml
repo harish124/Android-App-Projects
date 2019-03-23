@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">813198629530-v8ieq0uk2aj9brlvu51fa8lrutspm4ce.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://dummytest-b976f.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">813198629530</string>
+    <string name="google_api_key" translatable="false">AIzaSyC1aZvppdRVZezUBhdL0kOmuQEFz4q4k1U</string>
+    <string name="google_app_id" translatable="false">1:813198629530:android:5baa20a6f4141bc5</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC1aZvppdRVZezUBhdL0kOmuQEFz4q4k1U</string>
+    <string name="google_storage_bucket" translatable="false">dummytest-b976f.appspot.com</string>
+    <string name="project_id" translatable="false">dummytest-b976f</string>
+</resources>
