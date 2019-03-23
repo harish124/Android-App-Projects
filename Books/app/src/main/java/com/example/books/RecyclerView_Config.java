@@ -33,7 +33,7 @@ public class RecyclerView_Config {
         public BookItemView(ViewGroup parent)
         {
             super(LayoutInflater.from(mContext).
-            inflate(R.layout.book_list_item,parent,false));
+            inflate(R.layout.time_table_list,parent,false));
 
             mTitle = (TextView)itemView.findViewById(R.id.title_textview);
             mCategory= (TextView)itemView.findViewById(R.id.category_textview);
