@@ -1,45 +1,23 @@
 package com.example.timetabe;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.firebase.client.ChildEventListener;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.internal.api.FirebaseNoSignedInUserException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity{
 
     private RecyclerView mRecyclerView;
     private CheckBox ck1,ck2,ck3,ck4,ck5;
+    private MediaPlayer player;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -68,6 +46,9 @@ public class MainActivity extends AppCompatActivity{
         ck4=(CheckBox)findViewById(R.id.checkBox4);
         ck5=(CheckBox)findViewById(R.id.checkBox5);
         mRecyclerView = (RecyclerView)findViewById(R.id.recylclerview_timetable);
+
+        player= MediaPlayer.create(this,R.raw.waterringtone);
+
     }
 
     void clear()
@@ -129,7 +110,6 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
 
-
         try
         {
             init();
@@ -149,6 +129,8 @@ public class MainActivity extends AppCompatActivity{
             ck1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    player.start();
                     if(check())
                         clear();
                     ck1.setChecked(true);
@@ -162,6 +144,8 @@ public class MainActivity extends AppCompatActivity{
             ck2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    player.start();
                     if(check())
                     {
                         clear();
@@ -180,6 +164,8 @@ public class MainActivity extends AppCompatActivity{
             ck3.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    player.start();
                     if(check())
                         clear();
                     ck3.setChecked(true);
@@ -193,6 +179,8 @@ public class MainActivity extends AppCompatActivity{
             ck4.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    player.start();
                     if(check())
                         clear();
                     ck4.setChecked(true);
@@ -206,6 +194,8 @@ public class MainActivity extends AppCompatActivity{
             ck5.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    player.start();
                     if(check())
                         clear();
                     ck5.setChecked(true);

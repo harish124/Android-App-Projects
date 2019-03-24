@@ -20,15 +20,16 @@
         android:allowBackup="true"
         android:appComponentFactory="android.support.v4.app.CoreComponentFactory"
         android:debuggable="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/timetableicon"
         android:label="Time Table"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/timetable_round"
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.example.timetabe.MainActivity"
-            android:label="Time Table" >
+            android:label="Time Table"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
