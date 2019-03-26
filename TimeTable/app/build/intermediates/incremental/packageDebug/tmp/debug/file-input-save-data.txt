@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Mar 24 14:18:23 IST 2019
+#Wed Mar 27 00:36:10 IST 2019
 1.base=E\:\\AndroidStudioProjects\\TimeTable\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out
 0.baseType=DIRECTORY
 1.baseType=DIRECTORY

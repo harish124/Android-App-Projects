@@ -57,7 +57,7 @@ public class RecyclerView_Config {
             Calendar cal = Calendar.getInstance();
             player= MediaPlayer.create(mContext,R.raw.smsringtone);
 
-            int day=0;
+            /*int day=0;
             day = cal.get(Calendar.DAY_OF_WEEK);
             String dayName="";
 
@@ -78,11 +78,11 @@ public class RecyclerView_Config {
                 case Calendar.THURSDAY:
                     dayName="Thursday";
                     break;
-            }
+            }*/
             if(val.equalsIgnoreCase("lab"))
             {
                 player.start();
-                Toast.makeText(mContext,dayName+"Don't forget to take your\nObservation and Record notebooks.",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext,"Don't forget to take your\nObservation and Record notebooks.",Toast.LENGTH_SHORT).show();
             }
 
 

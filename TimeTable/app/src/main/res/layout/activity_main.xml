@@ -23,9 +23,9 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recylclerview_timetable"
         android:layout_width="match_parent"
-        android:layout_height="416dp"
+        android:layout_height="406dp"
         android:layout_marginTop="31dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="15dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
