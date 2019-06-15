@@ -14,7 +14,6 @@ import android.widget.EditText;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
-import com.parse.SignUpCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
 
 public class LoginActivity extends AppCompatActivity {
@@ -66,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                                     FancyToast.makeText(LoginActivity.this,user.get("username")+" Logged In Successfully", FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
 
                                     //After Logging go to the welcome page
-                                    Intent intent =new Intent(LoginActivity.this,WelcomeActivity.class);
+                                    Intent intent =new Intent(LoginActivity.this, SocialMediaActivity.class);
                                     startActivity(intent);
                                     loginbtn.setClickable(true);
 
