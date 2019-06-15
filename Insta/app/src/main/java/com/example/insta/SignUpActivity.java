@@ -49,9 +49,9 @@ public class SignUpActivity extends AppCompatActivity {
                 progressDialog.show();
                 signUpbtn.setClickable(false);
                 ParseUser appUser=new ParseUser();
-                appUser.setEmail(""+semail.getText());
-                appUser.setUsername(""+sUserName.getText());
-                appUser.setPassword(""+sPwd.getText());
+                appUser.setEmail(""+semail.getText().toString().trim());
+                appUser.setUsername(""+sUserName.getText().toString().trim());
+                appUser.setPassword(""+sPwd.getText().toString().trim());
 
                 appUser.signUpInBackground(new SignUpCallback() {
                     @Override

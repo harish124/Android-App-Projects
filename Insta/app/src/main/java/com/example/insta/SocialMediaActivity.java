@@ -22,7 +22,7 @@ public class SocialMediaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_socialmedia);
-        setTitle("Social Media Page!!!");
+        setTitle("          Social Media Page!!!");
 
         toolbar=findViewById(R.id.myToolbar);
         setSupportActionBar(toolbar);

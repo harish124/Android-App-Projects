@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setMessage("Processing Your Request!!!");
                 progressDialog.show();
                 loginbtn.setClickable(false);
-                ParseUser.logInInBackground(lUserName.getText().toString(), lPwd.getText().toString(),
+                ParseUser.logInInBackground(lUserName.getText().toString().trim(), lPwd.getText().toString().trim(),
 
                         new LogInCallback() {
                             @Override
