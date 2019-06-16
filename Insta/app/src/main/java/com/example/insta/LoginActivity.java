@@ -54,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
                 final ProgressDialog progressDialog=new ProgressDialog(LoginActivity.this);
                 progressDialog.setMessage("Processing Your Request!!!");
                 progressDialog.show();
+                progressDialog.setCanceledOnTouchOutside(false);
                 loginbtn.setClickable(false);
                 ParseUser.logInInBackground(lUserName.getText().toString().trim(), lPwd.getText().toString().trim(),
 

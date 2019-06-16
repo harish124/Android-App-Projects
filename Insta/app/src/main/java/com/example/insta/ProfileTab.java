@@ -46,12 +46,12 @@ public class ProfileTab extends Fragment {
 
         if(parseUser.get("ProfileName")!=null)
         {
-            pname.setText(parseUser.get("ProfileName")+"");
+            pname.setText("Profile Name: "+parseUser.get("ProfileName")+"");
         }
         if(parseUser.get("Gender")!=null)
-            gender.setText(parseUser.get("Gender")+"");
+            gender.setText("Gender: "+parseUser.get("Gender")+"");
         if(parseUser.get("Profession")!=null)
-            profession.setText(parseUser.get("Profession")+"");
+            profession.setText("Profession: "+parseUser.get("Profession")+"");
         if(parseUser.get("Hobby")!=null)
             hobby.setText("Hobby: "+parseUser.get("Hobby")+"");
         if(parseUser.get("Bio")!=null)

@@ -47,6 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
                 final ProgressDialog progressDialog=new ProgressDialog(SignUpActivity.this);
                 progressDialog.setMessage("Processing Your Request!!!");
                 progressDialog.show();
+                progressDialog.setCanceledOnTouchOutside(false);
                 signUpbtn.setClickable(false);
                 ParseUser appUser=new ParseUser();
                 appUser.setEmail(""+semail.getText().toString().trim());
