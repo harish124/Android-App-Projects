@@ -84,7 +84,8 @@ public class UsersPost extends AppCompatActivity {
                                             //Setting imageView Params
                                             LinearLayout.LayoutParams imageView_params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                                             postImageView.setLayoutParams(imageView_params);
-                                            postImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                                            postImageView.setScaleType(ImageView.ScaleType.FIT_START);
+                                            postImageView.setAdjustViewBounds(true);
                                             postImageView.setImageBitmap(bitmap);
                                             postImageView.setBackgroundResource(android.R.color.transparent);
                                             //Setting Image_Description Params
