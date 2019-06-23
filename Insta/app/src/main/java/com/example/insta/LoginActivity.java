@@ -66,6 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                                     FancyToast.makeText(LoginActivity.this,user.get("username")+" Logged In Successfully", FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
 
                                     //After Logging go to the welcome page
+
                                     Intent intent =new Intent(LoginActivity.this, SocialMediaActivity.class);
                                     startActivity(intent);
                                     loginbtn.setClickable(true);

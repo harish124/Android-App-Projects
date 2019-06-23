@@ -24,9 +24,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
+import com.parse.GetCallback;
+import com.parse.GetDataCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.shashank.sony.fancytoastlib.FancyToast;
@@ -62,6 +65,9 @@ public class SharePictureTab extends Fragment implements View.OnClickListener{
         imageView.setOnClickListener(SharePictureTab.this);
         sharebtn.setOnClickListener(SharePictureTab.this);
         myPosts.setOnClickListener(SharePictureTab.this);
+
+        retrieveProfilePic();
+
         return shareView;
 
     }
@@ -187,4 +193,38 @@ public class SharePictureTab extends Fragment implements View.OnClickListener{
             }
         }
     }
+
+    private void retrieveProfilePic() {
+        ParseQuery<ParseObject> parseQuery=new ParseQuery<ParseObject>("ProfilePictures");
+        parseQuery.whereEqualTo("username",ParseUser.getCurrentUser().getUsername());
+        //parseQuery.orderByDescending("createdAt");
+        parseQuery.getFirstInBackground(new GetCallback<ParseObject>() {
+            @Override
+            public void done(ParseObject object, ParseException e) {
+                if(e==null)
+                {
+                    if(object!=null)
+                    {
+                        final ParseFile profilePicture=(ParseFile)object.get("Picture");
+                        profilePicture.getDataInBackground(new GetDataCallback() {
+                            @Override
+                            public void done(byte[] data, ParseException e) {
+                                if(e==null)
+                                {
+                                    if (data != null)
+                                    {
+                                        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+                                        myPosts.setImageBitmap(bitmap);
+                                        //myPosts.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                                        //myPosts.setAdjustViewBounds(true);
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+
 }//eclass

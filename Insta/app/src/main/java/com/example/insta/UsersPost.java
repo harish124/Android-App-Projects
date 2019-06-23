@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +29,8 @@ import java.util.List;
 public class UsersPost extends AppCompatActivity {
 
     private LinearLayout linearLayout;
+    private ImageView postImageView;
+    private int likes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,12 @@ public class UsersPost extends AppCompatActivity {
                     {
                         for(ParseObject post:objects)
                         {
+
+                            likes=((post.get("Likes")+"").equals("null")) ? 0:Integer.parseInt(post.get("Likes")+"");
+                            if(likes==0)
+                            {
+                                post.put("Likes",0);
+                            }
                             final TextView imageDes=new TextView(UsersPost.this);
                             imageDes.setText("Description: "+post.get("ImageDescription"));
                             ParseFile postPicture=(ParseFile)post.get("Picture");
@@ -79,12 +88,13 @@ public class UsersPost extends AppCompatActivity {
                                         if(data!=null)
                                         {
                                             Bitmap bitmap= BitmapFactory.decodeByteArray(data,0,data.length);
-                                            ImageView postImageView=new ImageView(UsersPost.this);
+                                            postImageView=new ImageView(UsersPost.this);
 
                                             //Setting imageView Params
                                             LinearLayout.LayoutParams imageView_params=new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
                                             postImageView.setLayoutParams(imageView_params);
-                                            postImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+                                            postImageView.setScaleType(ImageView.ScaleType.FIT_START);
+                                            postImageView.setAdjustViewBounds(true);
                                             postImageView.setImageBitmap(bitmap);
                                             postImageView.setBackgroundResource(android.R.color.transparent);
                                             //Setting Image_Description Params
@@ -119,4 +129,5 @@ public class UsersPost extends AppCompatActivity {
             }
         });
     }
+
 }

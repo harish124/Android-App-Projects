@@ -3,7 +3,10 @@ package com.example.insta;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.material.tabs.TabLayout;
 import com.shashank.sony.fancytoastlib.FancyToast;
@@ -46,7 +49,10 @@ public class SocialMediaActivity extends AppCompatActivity {
     int backCount=0;
     @Override
     public void onBackPressed() {
-
+        if((System.currentTimeMillis()-bp)>1500)
+        {
+            backCount=0;
+        }
         if(backCount==0)
         {
             backCount++;
@@ -68,5 +74,23 @@ public class SocialMediaActivity extends AppCompatActivity {
             backCount=0;
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(item.getItemId()==R.id.about)
+        {
+            Intent intent=new Intent(SocialMediaActivity.this,About_Dev.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }//eclass
