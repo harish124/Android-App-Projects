@@ -187,9 +187,9 @@ public class ProfileTab extends Fragment implements View.OnClickListener {
                 if(receivedImageBitmap!=null)
                 {
                     profileUpdateBtn.setEnabled(false);
-                    FancyToast.makeText(getContext(),"Entered this...",FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
+                    //FancyToast.makeText(getContext(),"Entered this...",FancyToast.LENGTH_SHORT,FancyToast.INFO,true).show();
                     final ProgressDialog progressDialog=new ProgressDialog(getContext());
-                    progressDialog.setMessage("Uploading...");
+                    progressDialog.setMessage("Uploading Pic...");
                     progressDialog.show();
                     progressDialog.setCanceledOnTouchOutside(false);
                     ByteArrayOutputStream byteArrayOutputStream=new ByteArrayOutputStream();
@@ -215,11 +215,11 @@ public class ProfileTab extends Fragment implements View.OnClickListener {
                                             public void done(ParseException e) {
                                                 if(e==null)
                                                 {
-                                                    FancyToast.makeText(getContext(),"Profile Picture Deletion Successfull",FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
+                                                    //FancyToast.makeText(getContext(),"Profile Picture Deletion Successfull",FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
                                                 }
                                                 else
                                                 {
-                                                    FancyToast.makeText(getContext(),"Profile Picture Deletion Unsuccessfull\nError: "+e.getMessage(),FancyToast.LENGTH_SHORT,FancyToast.ERROR,true).show();
+                                                    //FancyToast.makeText(getContext(),"Profile Picture Deletion Unsuccessfull\nError: "+e.getMessage(),FancyToast.LENGTH_SHORT,FancyToast.ERROR,true).show();
                                                 }
                                             }
                                         });
@@ -230,7 +230,7 @@ public class ProfileTab extends Fragment implements View.OnClickListener {
                         }
                     });
 
-                    FancyToast.makeText(getContext(),"Entered Deletion Stage",FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
+                    //FancyToast.makeText(getContext(),"Entered Deletion Stage",FancyToast.LENGTH_SHORT,FancyToast.SUCCESS,true).show();
 
                     ParseObject parseObject=new ParseObject("ProfilePictures");
                     parseObject.put("username", ParseUser.getCurrentUser().getUsername());
@@ -248,7 +248,7 @@ public class ProfileTab extends Fragment implements View.OnClickListener {
                             }
                             else
                             {
-                                FancyToast.makeText(getContext(),"Profile Picture Upload Failed\nError: "+e.getMessage(),FancyToast.LENGTH_SHORT,FancyToast.ERROR,true).show();
+                                FancyToast.makeText(getContext(),"Profile Picture Upload Failed",FancyToast.LENGTH_SHORT,FancyToast.ERROR,true).show();
                                 profileUpdateBtn.setEnabled(true);
                             }
                         }
