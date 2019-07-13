@@ -8,6 +8,10 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
@@ -35,10 +39,9 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UsersTab extends Fragment implements AdapterView.OnItemClickListener,AdapterView.OnItemLongClickListener {
+public class UsersTab extends Fragment{
 
-
-    private ListView listView;
+    private RecyclerView recyclerView;
     private ArrayList<String> arrayList;
     private ArrayAdapter<String> arrayAdapter;
     public UsersTab() {
@@ -51,9 +54,9 @@ public class UsersTab extends Fragment implements AdapterView.OnItemClickListene
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View usersView=inflater.inflate(R.layout.fragment_users_tab, container, false);
+        final View usersView=inflater.inflate(R.layout.fragment_users_tab, container, false);
 
-        listView=usersView.findViewById(R.id.listView);
+
         arrayList=new ArrayList<>();
         arrayAdapter=new ArrayAdapter<String>(getContext(),android.R.layout.simple_list_item_1,arrayList)
         {
@@ -76,9 +79,6 @@ public class UsersTab extends Fragment implements AdapterView.OnItemClickListene
         ParseQuery<ParseUser> parseQuery=ParseUser.getQuery();
         parseQuery.whereNotEqualTo("username",ParseUser.getCurrentUser().getUsername());        //Find all other users.
 
-        listView.setOnItemClickListener(UsersTab.this);
-        listView.setOnItemLongClickListener(UsersTab.this);
-
         parseQuery.findInBackground(new FindCallback<ParseUser>() {
             @Override
             public void done(List<ParseUser> users, ParseException e) {
@@ -92,7 +92,12 @@ public class UsersTab extends Fragment implements AdapterView.OnItemClickListene
                             //Toast.makeText(getContext(),"Name: "+x.getUsername(),Toast.LENGTH_SHORT).show();
 
                         }
-                        listView.setAdapter(arrayAdapter);
+                        recyclerView = usersView.findViewById(R.id.recyclerView);
+                        recyclerView.setHasFixedSize(true);
+                        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+                        MyAdapter adapter=new MyAdapter(getContext(),arrayList);
+                        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),DividerItemDecoration.VERTICAL));
+                        recyclerView.setAdapter(adapter);
                     }
                 }
             }
@@ -100,68 +105,5 @@ public class UsersTab extends Fragment implements AdapterView.OnItemClickListene
 
         return usersView;
     }
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent=new Intent(getContext(),UsersPost.class);
-        intent.putExtra("Username",arrayList.get(position));
-        startActivity(intent);
-
-    }
-
-    @Override
-    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-
-        ParseQuery<ParseUser> parseQuery=ParseUser.getQuery();
-        parseQuery.whereEqualTo("username",arrayList.get(position));
-        parseQuery.getFirstInBackground(new GetCallback<ParseUser>() {
-             @Override
-             public void done(ParseUser object, ParseException e) {
-                if(e==null)
-                {
-                    if(object!=null)
-                    {
-                        final PrettyDialog pd=new PrettyDialog(getContext());
-                        String pname,gender,prof,hobby,bio;
-                        if((pname=(object.get("ProfileName")+"")).equals("null"))
-                        {
-                            pname=object.getUsername();
-                        }
-                        if((gender=(object.get("Gender")+"")).equals("null"))
-                            gender="";
-                        if((prof=(""+object.get("Profession"))).equals("null"))
-                            prof="";
-                        if((hobby=(""+object.get("Hobby"))).equals("null"))
-                            hobby="";
-                        if((bio=(""+object.get("Bio"))).equals("null"))
-                            bio="";
-                        pd.setTitle(object.getUsername()+" 's Info")
-                            .setMessage("Profile Name: "+pname+
-                                        "\nProfession: "+prof+
-                                        "\nGender: "+gender+
-                                        "\nHobbies: "+hobby+
-                                        "\nBio: "+bio)
-                                .setIcon(R.drawable.user)
-                                .addButton("Ok",
-                                        R.color.pdlg_color_white,
-                                        R.color.pdlg_color_green,
-                                        new PrettyDialogCallback() {
-                                            @Override
-                                            public void onClick() {
-                                                pd.dismiss();
-                                            }
-                                        })
-                            .show();
-                    }
-                }
-             }
-        });
-
-
-        return false;
-    }
-
-
 
 }

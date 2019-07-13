@@ -5,6 +5,6 @@
     <item
         android:id="@+id/about"
         android:orderInCategory="100"
-        android:title="About"
+        android:title="About Developer"
         app:showAsAction="never" />
 </menu>

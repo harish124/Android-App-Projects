@@ -67,6 +67,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                     //After Logging go to the welcome page
 
+
                                     Intent intent =new Intent(LoginActivity.this, SocialMediaActivity.class);
                                     startActivity(intent);
                                     loginbtn.setClickable(true);
